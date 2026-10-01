@@ -46,6 +46,9 @@ function ending(){
 function esc(x){return String(x??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function fmt(ts){return new Date(ts).toLocaleString("zh-CN",{hour12:false})}
 function nodeNum(id){const m=/^N(\d+)$/.exec(id);return m?m[1].padStart(2,"0"):"33"}
+function nodeIndex(id){const m=/^N(\d+)$/.exec(id);return m?Number(m[1]):99}
+function protagonist(id){return nodeIndex(id)<=16?"小粽":"阿麦"}
+function chapterLabel(id){const n=nodeIndex(id);if(n<=16)return["第一部","吉原尘泥录"];if(n<=25)return["第二部","大奥通真录"];if(n<=31)return["第二部","罗生逆浪传"];return["终章","蝶与花"]}
 function title(){
  return `<div class="screen paper"><section class="title-card"><div class="title-art"></div><div class="title-copy paper"><div class="title-seal">蝶花</div><div class="title-kana">ちょう　と　はな</div><h1 class="title">蝶与花</h1><p class="subtitle">幕末幻想 · 双主角视觉小说</p><div class="title-actions"><button class="btn" data-act="new">始　开始游戏</button>${hasAuto()?'<button class="btn" data-act="continue">续　继续游戏</button>':""}<button class="btn" data-act="load-title">录　存档读取</button></div><p class="title-note">第一部 · 小粽 / 暗绯<br>第二部 · 阿麦 / 月蓝<br>角色立绘与正式背景尚未置入，本版仅验证美术语言与交互。</p></div></section></div>`;
 }
